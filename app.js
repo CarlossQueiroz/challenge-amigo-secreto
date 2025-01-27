@@ -2,40 +2,20 @@
 let amigos = [];
 let inputAmigo = document.getElementById("amigo");
 
-function sortearAmigo() {
-    let n = amigos.length;
-    if (n != 0) {
-        let numeroSorteado = Math.random() * n;
-        console.log(numeroSorteado);
-        Math.floor(numeroSorteado);
-        console.log(Math.floor(numeroSorteado));
-
-        console.log(amigos[Math.floor(numeroSorteado)]);
-        let resultado = document.getElementById("resultado");
-        resultado.innerHTML = amigos[Math.floor(numeroSorteado)];
-    }
-    else {
-        alert("Nenhum nome cadastrado")
-    }
-}
-
 listarAmigos();
 
-function checkInputAmigo() {
-    const checkInput = inputAmigo.value;
+function adicionarAmigo() {
+    const checkInput = inputAmigo.value.trim();
 
     if (checkInput === "") {
         alert("Por favor, insira um nome.");
     }
     else {
-        amigos.push(checkInput)
-        listarAmigos();
+        amigos.push(checkInput);
         limparCampo();
+        listarAmigos();
+        console.log(amigos)
     }
-}
-
-function adicionarAmigo() {
-    checkInputAmigo();
 }
 
 function limparCampo() {
@@ -52,3 +32,21 @@ function listarAmigos() {
         listaAmigos.appendChild(item);
     }
 }
+
+function sortearAmigo() {
+    let n = amigos.length;
+    if (n != 0) {
+        let gerarNumero = Math.random() * n;
+        let numeroSorteado = Math.floor(gerarNumero);
+
+        let resultado = document.getElementById("resultado");
+        resultado.innerHTML = amigos[numeroSorteado];
+    }
+    else {
+        alert("Nenhum nome cadastrado")
+    }
+}
+
+
+
+
